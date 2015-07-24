@@ -36,12 +36,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications" Condition="'$(SignAssembly)'=='false'">
-      <HintPath>..\packages\Machine.Specifications.0.8.1\lib\net20\Machine.Specifications.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications" Condition="'$(SignAssembly)'=='true'">
       <HintPath>..\packages\Machine.Specifications-Signed.0.8.1\lib\net20\Machine.Specifications.dll</HintPath>
-    </Reference>	
+    </Reference>
+    <Reference Include="Machine.Specifications, Version=0.9.0.0, Culture=neutral, PublicKeyToken=5c474de7a495cff1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications-Signed.0.9.3\lib\net20\Machine.Specifications.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
