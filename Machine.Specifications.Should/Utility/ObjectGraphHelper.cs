@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Machine.Specifications.Utility
 {
@@ -31,7 +32,7 @@ namespace Machine.Specifications.Utility
 
         static INode GetKeyValueNode(object obj)
         {
-            var properties = obj.GetType().GetProperties()
+            var properties = obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
               .Where(p => p.CanRead)
               .Select(p =>
               {
@@ -43,7 +44,7 @@ namespace Machine.Specifications.Utility
                   };
               });
 
-            var fields = obj.GetType().GetFields()
+            var fields = obj.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public)
               .Select(f =>
               {
                   var field = f;

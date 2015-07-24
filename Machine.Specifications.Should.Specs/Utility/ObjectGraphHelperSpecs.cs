@@ -88,6 +88,23 @@ namespace Machine.Specifications.Should.Specs.Utility
 
             It should_return_a_key_value_node = () => _result.ShouldBeOfExactType<ObjectGraphHelper.KeyValueNode>();
         }
+
+        public class with_constants_and_statics
+        {
+            Establish ctx = () =>
+            {
+                var obj = new ObjectWithConstantAndStatics();
+                obj.NormalField = "value";
+                _obj = obj;
+            };
+
+            Because of = () => _result = ObjectGraphHelper.GetGraph(_obj);
+
+            It should_have_the_normal_member_only = () => {
+                ((ObjectGraphHelper.KeyValueNode) _result).KeyValues.Count().ShouldEqual(1);
+                ((ObjectGraphHelper.KeyValueNode) _result).KeyValues.Single().Name.ShouldEqual("NormalField");
+            };
+        }
     }
 
     [Subject(typeof(ObjectGraphHelper))]
@@ -225,6 +242,14 @@ namespace Machine.Specifications.Should.Specs.Utility
     {
         public string Field;
         public string Property { get; set; }
+    }
+
+    class ObjectWithConstantAndStatics
+    {
+        public const string Constant = "cvalue";
+        public static string StaticField = "sfvalue";
+        public static string StaticProperty { get { return "spvalue"; } }
+        public string NormalField;
     }
 
     public class Model
