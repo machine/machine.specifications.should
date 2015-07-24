@@ -79,11 +79,7 @@
   </PropertyGroup>
   <Target Name="AfterBuild">
     <MakeDir Directories="$(SpecsFolder)" />
-    <Exec 
-      Condition="'$(Configuration)' == 'Release' AND '$(SignAssembly)' == 'false'" 
-      Command="$(SolutionDir)\packages\Machine.Specifications.0.8.1\tools\mspec.exe --progress --silent $(TargetPath) --html $(SpecsFolder)$(MSBuildProjectName).html" />
-	<Exec 
-      Condition="'$(Configuration)' == 'Release' AND '$(SignAssembly)' == 'true'" 
-      Command="$(SolutionDir)\packages\Machine.Specifications-Signed.0.8.1\tools\mspec.exe --progress --silent $(TargetPath) --html $(SpecsFolder)$(MSBuildProjectName).html" />
+    <Exec Condition="'$(Configuration)' == 'Release' AND '$(SignAssembly)' == 'false'" Command="$(SolutionDir)\packages\Machine.Specifications.0.8.1\tools\mspec.exe --progress --silent $(TargetPath) --html $(SpecsFolder)$(MSBuildProjectName).html" />
+    <Exec Condition="'$(Configuration)' == 'Release' AND '$(SignAssembly)' == 'true'" Command="$(SolutionDir)\packages\Machine.Specifications-Signed.0.8.1\tools\mspec.exe --progress --silent $(TargetPath) --html $(SpecsFolder)$(MSBuildProjectName).html" />
   </Target>
 </Project>
