@@ -10,7 +10,6 @@ namespace Machine.Specifications.ComparerStrategies
              {
                new EnumerableComparer<T>(),
                new GenericTypeComparer<T>(),
-               new ComparableComparer<T>(),
                new EquatableComparer<T>(),
                new TypeComparer<T>()
              };
